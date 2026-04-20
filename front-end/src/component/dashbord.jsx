@@ -1,6 +1,3 @@
-// ============================================================
-// FICHIER : src/component/dashbord.jsx
-// ============================================================
 
 import { useState } from "react";
 import Header from "./header";
@@ -9,23 +6,23 @@ import { finduserbyaccount, findbeneficiarieByid } from "../Model/database";
 
 function Dashboard({ user }) {
 
-  // ---- Popups ----
+  //  Popups
   const [showTransfer, setShowTransfer] = useState(false);
   const [showRecharge, setShowRecharge] = useState(false);
 
-  // ---- State pour rafraîchir l'affichage après transfert/recharge ----
+  // State pour rafraîchir l affichage apres transfert/recharge
   const [currentUser, setCurrentUser] = useState(user);
 
-  // ---- States pour les champs du formulaire TRANSFERT ----
-  const [beneficiaryId, setBeneficiaryId] = useState("");   // le bénéficiaire choisi
-  const [sourceCard, setSourceCard]       = useState("");   // la carte choisie
-  const [amount, setAmount]               = useState("");   // le montant tapé
+  // States pour les champs du formulaire TRANSFERT
+  const [beneficiaryId, setBeneficiaryId] = useState("");   
+  const [sourceCard, setSourceCard]       = useState("");   
+  const [amount, setAmount]               = useState("");   
 
-  // ---- States pour les champs du formulaire RECHARGE ----
-  const [sourceCard2, setSourceCard2] = useState("");       // la carte choisie
-  const [amount2, setAmount2]         = useState("");       // le montant tapé
-
-  // ---- Calculs ----
+  // States pour les champs du formulaire RECHARGE 
+  const [sourceCard2, setSourceCard2] = useState("");       
+  const [amount2, setAmount2]         = useState("");      
+  
+  // Calculs
   const monthlyIncome = currentUser.wallet.transactions
     .filter((t) => t.type === "credit")
     .reduce((total, t) => total + t.amount, 0);
@@ -130,6 +127,10 @@ function Dashboard({ user }) {
     const beneficiaryAccount = findbeneficiarieByid(currentUser.id, beneficiaryId).account;
     transfer(currentUser, beneficiaryAccount, Number(amount));
   }
+
+
+
+
 
   // ********************** FONCTIONS RECHARGE **************************//
 
