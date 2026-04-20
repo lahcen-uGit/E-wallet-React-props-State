@@ -16,7 +16,7 @@ function Login({ setUser }) {
     const foundUser = finduserbymail(mail, password);
 
     if (foundUser) {
-      // connexion reussie on envoie l user a App.jsx
+      // connexion reussie on envoie user a App.jsx
       setUser(foundUser);
     } else {
     
